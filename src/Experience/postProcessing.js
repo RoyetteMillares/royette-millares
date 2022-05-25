@@ -1,0 +1,43 @@
+
+
+var PostProcessing = {
+    uniforms: {
+
+        "tDiffuse": {value: null},
+        "resolution": {value: null},
+        "pixelSize": {value: 1,},
+    },
+
+    vertexShader: [
+        "varying highp vec2 vUv;",
+
+        "void main() {",
+        "vUv = uv;",
+        "gl_Position = projectionMatrix * modelViewMatrix * vec4( position, 1.0);",
+
+
+        "}"
+
+    ].join("\n"),
+
+    fragmenShader: `
+
+    uniform sampler2D tDiffuse;
+    uniform float pixelSize;
+    uniform vec2 resolution;
+
+    varying highp vec2 vUv;
+    float hash(float n) {return fract(sin(n) * 1e4); }
+
+
+    void main()
+    {
+        vec2 dxy = pixelSize / resolution;
+        vec2 coord = dxy * floor (vUv / dxy);
+
+        
+        gl_FragColor = texture2D(tDiffuse,coord)
+    }`
+};
+
+export { PostProcessing };
