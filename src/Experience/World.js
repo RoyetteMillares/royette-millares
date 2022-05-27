@@ -18,9 +18,6 @@ export default class World
         //KUNG GANO KARAME UNG SECTION GANUN DIN KAHABA UNG LENGTH NG PARTICLES
         this.debug = this.experience.debug
 
-
-
-        
         //MY PARAMETERS FOR GUI
         this.parameters = {}
         this.parameters.counts = 1500

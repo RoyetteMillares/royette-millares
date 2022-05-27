@@ -34,22 +34,7 @@ export default class Ball
         //MY PARAMETER FOR DEBUG GUI
         this.parameter = {}
         this.parameter.color = '#ededed'
-        //DEBUG
-        if(this.debug.active)
-        {
-            this.folderColor = this.debug.gui.addFolder('Objects Color')
-            this.folderColor.addColor(this.parameter, 'color').name('Circle Color').onChange(() => {
-                this.materialOne.color.set(this.parameter.color)
-            })
-            this.folderColor.addColor(this.parameter, 'color').name('Cone Color').onChange(() => {
-                this.materialTwo.color.set(this.parameter.color)
-            })
-            this.folderColor.addColor(this.parameter, 'color').name('TorusKnot Color').onChange(() => {
-                this.materialThree.color.set(this.parameter.color)
-            })
-
-        }
-        //DEBUG
+      
 
 
         this.objectsDistance = 11;
@@ -62,6 +47,7 @@ export default class Ball
             this.cursor.x = e.clientX / this.sizes.width - 0.5
             this.cursor.y = e.clientY / this.sizes.height - 0.5
         })
+
         //SCROLLING MADE SIMPLE FOR NOW
         this.scrollY = window.scrollY
         this.currentSection = 0
@@ -145,8 +131,6 @@ export default class Ball
         this.scene.add(this.mesh)
         this.scene.add(this.icoLines)
         
-
-
         //ICOSAHEDRON WOW
 
         this.geoN = new THREE.TorusBufferGeometry(1,0.4,16,60)
@@ -179,11 +163,10 @@ export default class Ball
         this.meshThree.position.y = - this.objectsDistance * 3
 
         //BANNER
-        // this.mesh.position.x = 1
-        // this.icoLines.position.x = 1
-
+    
         this.banner = new THREE.Group(this.mesh, this.icoLines);
         this.banner.position.x = 0.005;
+        
         //BANNER
 
         this.meshN.position.x = 4
@@ -194,7 +177,28 @@ export default class Ball
         this.sectionMeshes = [this.meshN, this.meshTwo, this.meshThree]
         
 
+          //DEBUG
+        if(this.debug.active)
+        {
+            this.folderColor = this.debug.gui.addFolder('Objects Color')
+            this.folderColor.addColor(this.parameter, 'color').name('Circle Color').onChange(() => {
+                this.materialOne.color.set(this.parameter.color)
+            })
+            this.folderColor.addColor(this.parameter, 'color').name('Cone Color').onChange(() => {
+                this.materialTwo.color.set(this.parameter.color)
+            })
+            this.folderColor.addColor(this.parameter, 'color').name('TorusKnot Color').onChange(() => {
+                this.materialThree.color.set(this.parameter.color)
+            })
 
+            this.folderPos = this.debug.gui.addFolder('Position of Sphere')
+
+            this.folderPos.add(this.banner.position, 'x').min(1).step(0.001).max(6).name('Pos X');
+
+
+
+        }
+        //DEBUG
         
     }
     animateCamera()
@@ -260,6 +264,8 @@ export default class Ball
         this.mesh.rotation.y += 0.02 * this.deltaTime
         this.icoLines.rotation.x += 0.01 * this.deltaTime
         this.icoLines.rotation.y += 0.02 * this.deltaTime
+
+        
     }
 
   

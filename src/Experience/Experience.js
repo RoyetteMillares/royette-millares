@@ -19,6 +19,7 @@ export default class Experience
         if(instance){
             return instance
         }
+        
         instance = this
 
         this.debug = new Debug()
