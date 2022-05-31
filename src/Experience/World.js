@@ -74,7 +74,6 @@ export default class World
         {
             this.positions[i * 3 + 0] = (Math.random() - 0.5) * 10
             this.positions[i * 3 + 1] = this.objectDistance * 0.5 - Math.random() * this.objectDistance * this.section
-            
             this.positions[i * 3 + 2] = (Math.random() - 0.5) * 10
 
             this.color[i] = (Math.random() - 0.5) * 10
