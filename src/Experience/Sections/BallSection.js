@@ -6,10 +6,6 @@ import vertexIco from '../shaders/vertexIco.glsl'
 import fragmentIco from '../shaders/fragmentIco.glsl'
 import fragment1 from '../shaders/fragment1.glsl'
 
-import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer'
-import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass'
-import { ShaderPass } from 'three/examples/jsm/postprocessing/ShaderPass'
-import { PostProcessing}  from '../postProcessing'
 
 export default class Ball
 {
@@ -55,7 +51,7 @@ export default class Ball
        
     
 
-        // this.addPostProcessing()
+        
             this.setBall()
             this.animateScroll()
         
@@ -223,7 +219,7 @@ export default class Ball
         {   
             // mesh.rotation.x = this.elapsed * 10
             // mesh.rotation.y = this.elapsed * 12
-
+            //YETTE ung portfolio dapat taposin mona to ehh
             mesh.rotation.x += 0.1 * this.deltaTime
             mesh.rotation.y += 0.2 * this.deltaTime
             
